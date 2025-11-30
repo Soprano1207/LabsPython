@@ -1,7 +1,42 @@
 services:
-  web:
+  # web:
+  #   build: .
+  #   volumes:
+  #     - .:/app
+  #   ports:
+  #     - "8000:8000"
+  #   environment:
+  #     - PYTHONUNBUFFERED=1
+
+  lab1:
     build: .
+    ports:
+      - "8001:8000"
+    command: python lab1/myproject/manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/app
+    container_name: django-lab1
+    tty: true
+    stdin_open: true
+
+  lab2:
+    build: .
     ports:
-      - "8000:8000"
+      - "8002:8000"
+    command: python lab2/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    container_name: django-lab2
+    tty: true
+    stdin_open: true
+
+  lab3:
+    build: .
+    ports:
+      - "8003:8000"
+    command: python lab3/manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    container_name: django-lab3
+    tty: true
+    stdin_open: true
